@@ -5,7 +5,7 @@ const maxNumber = (nbrArray) => {
   let nbrMax = 0;
 
   newNbrArray.forEach((nbr) =>
-    nbrMap[nbr] ? nbrMap[nbr]++ : (nbrMap[nbr] = nbrMap[nbr] = 1)
+    nbrMap[nbr] ? nbrMap[nbr]++ : (nbrMap[nbr] = 1)
   );
 
   for (number in nbrMap) {
