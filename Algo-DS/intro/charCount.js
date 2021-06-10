@@ -11,11 +11,13 @@ charCount = (str) => {
   lowerStr = str.toLowerCase();
 
   for (char of lowerStr) {
-    Map[char] ? Map[char]++ : (Map[char] = 1);
+    if (isNaN(char)) {
+      Map[char] ? Map[char]++ : (Map[char] = 1);
+    }
   }
 
   return Map;
 };
 
-const output = charCount("Helloh");
+const output = charCount("Helloh1222");
 console.log(output);
