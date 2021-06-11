@@ -1,5 +1,6 @@
 const isAnagram = (str1, str2) => {
   if (str1.length !== str2.length) return false;
+
   const charCounter = {};
   //const freqCounter2 = {}
 
@@ -19,6 +20,14 @@ const isAnagram = (str1, str2) => {
   //     if (charCounter[key] !== freqCounter2[key]) return false;
   //   }
   return true;
+  //! naive Solution
+  //   for (char of str1) {
+  //     let charIndex = str2.indexOf(char);
+  //     if (charIndex === -1) return false;
+  //     str2 =
+  //       str2.substring(0, charIndex) + str2.substr(charIndex + 1, str2.length);
+  //   }
+  //   return true;
 };
 
 const output = isAnagram("cinema", "iceman");
