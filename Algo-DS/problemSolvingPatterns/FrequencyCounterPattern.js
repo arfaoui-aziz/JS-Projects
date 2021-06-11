@@ -1,6 +1,7 @@
 const same = (tab1, tab2) => {
+  if (tab1.length !== tab2.length) return false;
   //! naive Solution O(n^2)
-  // if (tab1.length !== tab2.length) return false;
+
   // for (let i = 0; i < tab1.length; i++) {
   //   let correctIndex = tab2.indexOf(tab1[i] ** 2);
   //   if (correctIndex === -1) return false;
@@ -27,15 +28,16 @@ const same = (tab1, tab2) => {
   const frequencyCounter1 = {};
   const frequencyCounter2 = {};
 
-  for (nbr of tab1) {
-    frequencyCounter1[nbr] = (frequencyCounter1[nbr] || 0) + 1;
+  for (value of tab1) {
+    frequencyCounter1[value] = (frequencyCounter1[value] || 0) + 1;
   }
 
-  for (nbr2 of tab2) {
-    frequencyCounter2[nbr2] = (frequencyCounter2[nbr2] || 0) + 1;
+  for (value of tab2) {
+    frequencyCounter2[value] = (frequencyCounter2[value] || 0) + 1;
   }
-  for (keys in frequencyCounter1) {
-    if (frequencyCounter1[keys] !== frequencyCounter2[keys ** 2]) return false;
+  for (key in frequencyCounter1) {
+    if (!(key ** 2 in frequencyCounter2)) return false;
+    if (frequencyCounter1[key] !== frequencyCounter2[key ** 2]) return false;
   }
   return true;
 };
