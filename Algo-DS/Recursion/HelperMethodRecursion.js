@@ -20,6 +20,15 @@ const countOddsInArray = (array) => {
   return oddsArray;
 };
 
+//! Pure Recursion
+// const countOddsInArray = (array) => {
+//   let oddsArray = [];
+//  if(array.length === 0) return oddsArray;
+//  if(array[0] % 2 !== 0) oddsArray.push(array[0])
+//  oddsArray = oddsArray.concat(countOddsInArray(array.slice(1)));
+//  return oddsArray;
+// };
+
 const output = countOddsInArray([
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
 ]);
