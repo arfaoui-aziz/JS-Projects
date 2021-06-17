@@ -4,16 +4,12 @@ const binarySearch = (arr, searchInput) => {
   let right = arr.length - 1;
   while (left <= right) {
     let mid = Math.trunc((left + right) / 2);
-    if (arr[mid] === searchInput) {
-      return mid;
-    } else if (searchInput > arr[mid]) {
-      left = mid + 1;
-    } else {
-      right = mid - 1;
-    }
+    if (arr[mid] === searchInput) return mid;
+    else if (searchInput > arr[mid]) left = mid + 1;
+    else right = mid - 1;
   }
   return -1;
 };
 
-const output = binarySearch([0, 1, 2, 3, 4, 5,6,15,100,542,600], 542);
-console.log(output, "az"> "as");
+const output = binarySearch([0, 1, 2, 3, 4, 5, 6, 15, 100, 542, 600], 100);
+console.log(output);
