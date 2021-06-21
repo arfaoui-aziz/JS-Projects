@@ -1,5 +1,7 @@
 const bubbleSort = (arr) => {
+  let noSwap;
   for (let i = 1; i < arr.length; i++) {
+    noSwap = true;
     for (let j = 0; j < arr.length - i; j++) {
       console.log(arr[j], arr[j + 1]);
       if (arr[j] > arr[j + 1]) {
@@ -8,9 +10,10 @@ const bubbleSort = (arr) => {
         arr[j] = temp;
         //OR ES6 Destructuring assignment
         // [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]];
+        noSwap = false;
       }
     }
-    console.log("ittttt");
+    if (noSwap) break;
   }
   console.log(arr);
 };
