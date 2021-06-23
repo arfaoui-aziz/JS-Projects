@@ -21,8 +21,8 @@ const mergeArrays = (arr, arr2) => {
     }
   }
 
-  for (let k = i; k < arr.length; k++) sortedArray.push(arr[k]);
-  for (let k = j; k < arr2.length; k++) sortedArray.push(arr2[k]);
+  for (; i < arr.length; i++) sortedArray.push(arr[i]);
+  for (; j < arr2.length; j++) sortedArray.push(arr2[j]);
 
   //   for (let k = i; k >= 0; k--) sortedArray.push(arr[k]);
   //   for (let k = j; k >= 0; k--) sortedArray.push(arr2[k]);
