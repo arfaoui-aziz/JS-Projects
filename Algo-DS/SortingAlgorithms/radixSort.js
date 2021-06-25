@@ -1,3 +1,6 @@
+// Time Complexity = O(nk)
+// Space Complexity = O(n+k)
+
 const getDigit = (num, i) => {
   // let tempStr = num.toString().split("").reverse().join("");
   // return tempStr[i];
@@ -13,7 +16,7 @@ const digitCount = (num) => {
 
 const maxDigits = (nums) => {
   let max = 0;
-  for (nbr of nums) {
+  for (let nbr of nums) {
     max = Math.max(max, digitCount(nbr));
   }
   return max;
@@ -37,4 +40,4 @@ const radixSort = (nums) => {
 
 // console.log(getDigit(1455, 2));
 
-console.log(radixSort([0, 2, 3, 45, 4555, 97772, 2545]));
+console.log(radixSort([0, 2, 3, 45, 4555, 97772, 2545, 2546]));
