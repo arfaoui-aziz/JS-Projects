@@ -15,7 +15,7 @@ class SinglyLinkedList {
     const newNode = new Node(value);
     if (!this.head) {
       this.head = newNode;
-      this.tail = newNode;
+      this.tail = this.head;
     } else {
       this.tail.next = newNode;
       this.tail = newNode;
@@ -33,8 +33,8 @@ class SinglyLinkedList {
 
   pop() {
     if (!this.head) return;
-    let previous = null;
     let current = this.head;
+    let previous = current;
     while (current.next) {
       previous = current;
       current = current.next;
@@ -62,7 +62,7 @@ list.push(0);
 list.push(2);
 list.push(4);
 console.log(list);
-console.log(list.traverse());
-console.log(list.pop());
-console.log(list);
-console.log(list.traverse());
+// console.log(list.traverse());
+// console.log(list.pop());
+// console.log(list);
+// console.log(list.traverse());
