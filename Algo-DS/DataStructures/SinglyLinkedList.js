@@ -48,6 +48,17 @@ class SinglyLinkedList {
     }
     return this;
   }
+
+  shift() {
+    if (!this.head) return;
+    let oldHead = this.head;
+    this.head = oldHead.next;
+    this.length--;
+    if (this.length === 0) {
+      this.tail = null;
+    }
+    return oldHead.val;
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -61,8 +72,12 @@ const list = new SinglyLinkedList();
 list.push(0);
 list.push(2);
 list.push(4);
-console.log(list);
+// console.log(list);
 // console.log(list.traverse());
 // console.log(list.pop());
 // console.log(list);
 // console.log(list.traverse());
+
+console.log(list.shift());
+console.log("**************");
+console.log(list.traverse());
