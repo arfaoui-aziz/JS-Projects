@@ -23,6 +23,17 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+  traverse() {
+    let current = this.head;
+    while (current) {
+      console.log(current.val);
+      current = current.next;
+    }
+  }
+
+  pop(){
+    
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -36,7 +47,4 @@ const list = new SinglyLinkedList();
 console.log(list.push(0));
 console.log(list.push(2));
 console.log(list.push(4));
-// console.log(list.head);
-// console.log(list.head.next);
-
-console.log(list);
+console.log(list.traverse());
