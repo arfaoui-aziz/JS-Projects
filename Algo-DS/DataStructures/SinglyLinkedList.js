@@ -91,6 +91,20 @@ class SinglyLinkedList {
     return false;
   }
 
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length) return !!this.push(val);
+    if (index === 0) return !!this.unshift(val);
+
+    const newNode = new Node(val);
+    const prevNode = this.get(index - 1);
+    const temp = prevNode.next;
+    prevNode.next = newNode;
+    newNode.next = temp;
+    this.length++;
+    return true;
+  }
+
   // reverse() {
   //   let current = this.head;
   //   let reversedList = new SinglyLinkedList();
@@ -129,4 +143,5 @@ console.log(list.traverse());
 
 console.log(list.get(0));
 console.log(list.set(0, 13));
+console.log(list.insert(2, 5));
 console.log(list.traverse());
