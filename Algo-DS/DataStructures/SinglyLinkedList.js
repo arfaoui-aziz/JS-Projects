@@ -71,6 +71,36 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+
+  get(index) {
+    if (index >= this.length || index < 0) return null;
+    let current = this.head;
+
+    for (let i = 0; i < index; i++) {
+      current = current.next;
+    }
+    return current;
+  }
+
+  set(index, val) {
+    let foundNode = this.get(index);
+    if (foundNode) {
+      foundNode.val = val;
+      return true;
+    }
+    return false;
+  }
+
+  // reverse() {
+  //   let current = this.head;
+  //   let reversedList = new SinglyLinkedList();
+  //   while (current) {
+  //     reversedList.unShift(current.val);
+  //     current = current.next;
+  //   }
+
+  //   return reversedList;
+  // }
 }
 
 const list = new SinglyLinkedList();
@@ -95,4 +125,8 @@ console.log("**************");
 console.log(list.traverse());
 
 console.log(list.unShift(9));
+console.log(list.traverse());
+
+console.log(list.get(0));
+console.log(list.set(0, 13));
 console.log(list.traverse());
