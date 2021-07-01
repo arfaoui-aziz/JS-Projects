@@ -29,11 +29,10 @@ class Stack {
     if (!this.first) return null;
     const removedFirst = this.first;
     if (this.size === 1) {
-      this.first = null;
       this.last = null;
-    } else {
-      this.head = removedFirst.next;
     }
+    this.first = removedFirst.next;
+
     this.size--;
     return removedFirst.val;
   }
@@ -42,8 +41,7 @@ class Stack {
 const stack = new Stack();
 
 stack.unshift(3);
-stack.unshift(4);
-stack.unshift(5);
+
 console.log(stack);
 console.log(stack.shift());
 console.log(stack);
