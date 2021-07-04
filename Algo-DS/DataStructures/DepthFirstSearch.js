@@ -66,6 +66,35 @@ class Tree {
     }
     return visitedNodes;
   }
+
+  DFS_PostOrder() {
+    let visitedNodes = [];
+    let currentNode = this.root;
+    const traverse = (currentNode) => {
+      if (currentNode.left) traverse(currentNode.left);
+      if (currentNode.right) traverse(currentNode.right);
+      visitedNodes.push(currentNode.val);
+    };
+
+    traverse(currentNode);
+    //or directly traverse(this.root);
+    return visitedNodes;
+  }
+
+  // DFS_PostOrder_Iterative() {
+  //   let visitedNodes = [];
+  //   let currentNode = this.root;
+  //   let stack = [];
+  //   stack.push(currentNode);
+
+  //   while (stack.length) {
+  //     if (currentNode.right) stack.push(currentNode.right);
+  //     if (currentNode.left) stack.push(currentNode.left);
+  //     currentNode = stack.pop();
+  //     visitedNodes.push(currentNode.val);
+  //   }
+  //   return visitedNodes;
+  // }
 }
 
 const tree = new Tree();
@@ -86,3 +115,5 @@ tree.insert(20);
 // console.log(tree);
 console.log(tree.DFS_PreOrder());
 console.log(tree.DFS_PreOrder_Iterative());
+console.log(tree.DFS_PostOrder());
+console.log(tree.DFS_PostOrder_Iterative());
