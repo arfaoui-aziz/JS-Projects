@@ -55,10 +55,10 @@ class Tree {
 const tree = new Tree();
 
 //4it    10
-//1it   /  \5it 
+//1it   /  \5it
 //3it  6    15
 //2it / \    \6it
-//  3  8      20
+//   3  8      20
 
 tree.insert(10);
 tree.insert(6);
