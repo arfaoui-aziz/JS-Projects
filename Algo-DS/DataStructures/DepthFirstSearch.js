@@ -50,6 +50,22 @@ class Tree {
     //or directly traverse(this.root);
     return visitedNodes;
   }
+
+  DFS_PreOrder_Iterative() {
+    let visitedNodes = [];
+    let currentNode = this.root;
+    let stack = [];
+    stack.push(currentNode);
+
+    while (stack.length) {
+      currentNode = stack.pop();
+      visitedNodes.push(currentNode.val);
+
+      if (currentNode.right) stack.push(currentNode.right);
+      if (currentNode.left) stack.push(currentNode.left);
+    }
+    return visitedNodes;
+  }
 }
 
 const tree = new Tree();
@@ -67,5 +83,6 @@ tree.insert(3);
 tree.insert(8);
 tree.insert(20);
 
-console.log(tree);
+// console.log(tree);
 console.log(tree.DFS_PreOrder());
+console.log(tree.DFS_PreOrder_Iterative());
