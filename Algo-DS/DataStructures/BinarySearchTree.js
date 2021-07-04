@@ -63,6 +63,35 @@ class BinarySearchTree {
   //         }
   //     }
   // }
+
+  find(val) {
+    if (!this.root) return;
+    let currentNode = this.root;
+
+    while (currentNode) {
+      if (currentNode.val === val) return currentNode;
+      currentNode =
+        val < currentNode.val ? currentNode.left : currentNode.right;
+    }
+    return;
+  }
+  //Colt Solution
+  // find(value){
+  //     if(this.root === null) return false;
+  //     var current = this.root,
+  //         found = false;
+  //     while(current && !found){
+  //         if(value < current.value){
+  //             current = current.left;
+  //         } else if(value > current.value){
+  //             current = current.right;
+  //         } else {
+  //             found = true;
+  //         }
+  //     }
+  //     if(!found) return undefined;
+  //     return current;
+  // }
 }
 
 const bst = new BinarySearchTree();
@@ -73,3 +102,8 @@ bst.insert(5);
 bst.insert(2);
 
 console.log(bst);
+
+console.log(bst.find(5));
+console.log(bst.find(3));
+console.log(bst.find(2));
+console.log(bst.find(9));
