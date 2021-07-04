@@ -38,6 +38,7 @@ class BinarySearchTree {
     }
     return this;
   }
+
   //Colt Solution
   //   insert(value){
   //     var newNode = new Node(value);
@@ -96,14 +97,21 @@ class BinarySearchTree {
 
 const bst = new BinarySearchTree();
 
-bst.insert(3);
-bst.insert(1);
+//      10
+//   5     13
+// 2  7  11  16
+
+bst.insert(10);
 bst.insert(5);
+bst.insert(13);
+bst.insert(11);
 bst.insert(2);
+bst.insert(16);
+bst.insert(7);
 
 console.log(bst);
 
 console.log(bst.find(5));
-console.log(bst.find(3));
-console.log(bst.find(2));
-console.log(bst.find(9));
+console.log(bst.find(10));
+console.log(bst.find(7));
+console.log(bst.find(50));
