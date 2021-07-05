@@ -81,21 +81,6 @@ class Tree {
     return visitedNodes;
   }
 
-  // DFS_PostOrder_Iterative() {
-  //   let visitedNodes = [];
-  //   let currentNode = this.root;
-  //   let stack = [];
-  //   stack.push(currentNode);
-
-  //   while (stack.length) {
-  //     if (currentNode.right) stack.push(currentNode.right);
-  //     if (currentNode.left) stack.push(currentNode.left);
-  //     currentNode = stack.pop();
-  //     visitedNodes.push(currentNode.val);
-  //   }
-  //   return visitedNodes;
-  // }
-
   DFS_InOrder() {
     let visitedNodes = [];
     let currentNode = this.root;
@@ -127,8 +112,8 @@ tree.insert(8);
 tree.insert(20);
 
 // console.log(tree);
-console.log(tree.DFS_PreOrder());
+console.log(tree.DFS_PreOrder()); //[10,6,3,8,15,20]
 console.log(tree.DFS_PreOrder_Iterative());
-console.log(tree.DFS_PostOrder());
-// console.log(tree.DFS_PostOrder_Iterative());
-console.log(tree.DFS_InOrder());
+console.log(tree.DFS_PostOrder()); //[3,8,6,20,15,10]
+
+console.log(tree.DFS_InOrder()); //[3,6,8,10,15,20]
