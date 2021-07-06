@@ -1,7 +1,6 @@
 class MaxBinaryHeap {
   constructor() {
-    // this.values = [190, 60, 100, 50, 29, 30, 14, 6, 15, 1];
-    this.values = [55];
+    this.values = [190, 60, 100, 50, 29, 30, 14, 6, 15, 1];
   }
   //   ! Create a MaxBinaryHeap from an array
   create(arr) {
@@ -41,7 +40,7 @@ class MaxBinaryHeap {
 
   //remove root (sink Down)
   extractMax() {
-    //Swap
+    //* Swap
     let max = this.values[0];
     let val = this.values.pop();
     //! Edge Case if we have only one element in the array we pop the value
@@ -49,29 +48,25 @@ class MaxBinaryHeap {
     //! we always have at least one element in our Heap
     if (this.values.length === 0) return max;
     this.values[0] = val;
-    //Sink Down
+    //* Sink Down
     let index = 0;
-    let leftIdx = 0;
-    let rightIdx = 0;
-    let leftChild = 0;
-    let rightChild = 0;
-    let largestChild = 0;
+    let leftChild, rightChild, largestChildIdx;
     while (true) {
-      leftIdx = index * 2 + 1;
-      rightIdx = index * 2 + 2;
+      let leftIdx = index * 2 + 1;
+      let rightIdx = index * 2 + 2;
 
       if (leftIdx < this.values.length) leftChild = this.values[leftIdx];
       if (rightIdx < this.values.length) rightChild = this.values[rightIdx];
 
-      largestChild = leftChild > rightChild ? leftIdx : rightIdx;
+      largestChildIdx = leftChild > rightChild ? leftIdx : rightIdx;
 
-      if (val < this.values[largestChild]) {
-        [this.values[index], this.values[largestChild]] = [
-          this.values[largestChild],
+      if (val < this.values[largestChildIdx]) {
+        [this.values[index], this.values[largestChildIdx]] = [
+          this.values[largestChildIdx],
           this.values[index],
         ];
 
-        index = largestChild;
+        index = largestChildIdx;
       } else {
         break;
       }
