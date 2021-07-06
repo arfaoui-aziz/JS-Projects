@@ -81,5 +81,11 @@ heap = new MaxBinaryHeap();
 
 // console.log(heap.insert(60));
 // console.log(heap.insert(1));
-console.log(heap.extractMax());
 console.log(heap);
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
+console.log(heap.extractMax());
