@@ -51,17 +51,14 @@ class PriorityQueue {
         if (rightChild < leftChild) minChildIdx = rightIdx;
       }
 
-      if (!minChildIdx) break;
-
-      if (val.priority > this.values[minChildIdx].priority) {
-        [this.values[index], this.values[minChildIdx]] = [
-          this.values[minChildIdx],
-          this.values[index],
-        ];
-        index = minChildIdx;
-      } else {
+      if (!minChildIdx || val.priority <= this.values[minChildIdx].priority)
         break;
-      }
+
+      [this.values[index], this.values[minChildIdx]] = [
+        this.values[minChildIdx],
+        this.values[index],
+      ];
+      index = minChildIdx;
     }
     return maxPriority;
   }
