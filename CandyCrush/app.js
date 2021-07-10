@@ -84,10 +84,13 @@ document.addEventListener("DOMContentLoaded", () => {
   //checking for matches in
 
   function checkRowForThree() {
-    for (let i = 0; i < 61; i++) {
+    for (let i = 0; i < squares.length - 2; i++) {
       let rowOfThree = [i, i + 1, i + 2];
       let currentColor = squares[i].style.backgroundColor;
       const isBlank = squares[i].style.backgroundColor === "";
+
+      const notValid = [6, 7, 14, 15, 22, 23, 30, 31, 38, 39, 46, 47, 54, 55];
+      if (notValid.includes(i)) continue;
 
       if (
         rowOfThree.every(
@@ -104,9 +107,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  checkRowForThree();
+  function checkColumnForThree() {
+    for (let i = 0; i < squares.length - width * 2; i++) {
+      let ColumnOfThree = [i, i + width, i + width * 2];
+      let currentColor = squares[i].style.backgroundColor;
+      const isBlank = squares[i].style.backgroundColor === "";
+
+      if (
+        ColumnOfThree.every(
+          (index) =>
+            squares[index].style.backgroundColor === currentColor && !isBlank
+        )
+      ) {
+        score += 3;
+        ColumnOfThree.forEach((index) => {
+          squares[index].style.backgroundColor = "";
+        });
+        console.log(score);
+      }
+    }
+  }
 
   window.setInterval(function () {
     checkRowForThree();
+    checkColumnForThree();
   }, 100);
 });
