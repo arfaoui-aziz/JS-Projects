@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const grid = document.querySelector(".grid");
   const width = 8;
-  const squares = [];
+  let squares = [];
+  let score = 0;
 
   const candyColors = ["red", "yellow", "green", "orange", "purple", "blue"];
 
@@ -79,4 +80,33 @@ document.addEventListener("DOMContentLoaded", () => {
       squares[squareIdBeingDragged].style.backgroundColor = colorBeingDragged;
     //if outside grid
   }
+
+  //checking for matches in
+
+  function checkRowForThree() {
+    for (let i = 0; i < 61; i++) {
+      let rowOfThree = [i, i + 1, i + 2];
+      let currentColor = squares[i].style.backgroundColor;
+      const isBlank = squares[i].style.backgroundColor === "";
+
+      if (
+        rowOfThree.every(
+          (index) =>
+            squares[index].style.backgroundColor === currentColor && !isBlank
+        )
+      ) {
+        score += 3;
+        rowOfThree.forEach((index) => {
+          squares[index].style.backgroundColor = "";
+        });
+        console.log(score);
+      }
+    }
+  }
+
+  checkRowForThree();
+
+  window.setInterval(function () {
+    checkRowForThree();
+  }, 100);
 });
