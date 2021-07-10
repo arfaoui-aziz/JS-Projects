@@ -54,8 +54,29 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(this.id, "dragdrop");
     colorBeingReplaced = this.style.backgroundColor;
     squareIdBeingReplaced = parseInt(this.id);
+    //Swap 2 colors/divs
+    this.style.backgroundColor = colorBeingDragged;
     squares[squareIdBeingDragged].style.backgroundColor = colorBeingReplaced;
   }
 
-  function dragEnd() {}
+  function dragEnd() {
+    //Define validMoves
+    let validMoves = [
+      squareIdBeingDragged - 1,
+      squareIdBeingDragged - width, //top
+      squareIdBeingDragged + 1,
+      squareIdBeingDragged + width, // bottom
+    ];
+
+    let isValidMove = validMoves.includes(squareIdBeingReplaced);
+    if (squareIdBeingReplaced && isValidMove) {
+      squareIdBeingReplaced = null;
+    } else if (squareIdBeingReplaced && !isValidMove) {
+      // if not a valid move we keep the same old values we don't swap
+      squares[squareIdBeingReplaced].style.backgroundColor = colorBeingReplaced;
+      squares[squareIdBeingDragged].style.backgroundColor = colorBeingDragged;
+    } else
+      squares[squareIdBeingDragged].style.backgroundColor = colorBeingDragged;
+    //if outside grid
+  }
 });
