@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const grid = document.querySelector(".grid");
+  const scoreDisplay = document.getElementById("score");
   const width = 8;
   let squares = [];
   let score = 0;
@@ -81,6 +82,23 @@ document.addEventListener("DOMContentLoaded", () => {
     //if outside grid
   }
 
+  //drop candies once some have been cleared
+  function moveIntoSquareBelow() {
+    for (i = 0; i < 55; i++) {
+      if (squares[i + width].style.backgroundImage === "") {
+        squares[i + width].style.backgroundImage =
+          squares[i].style.backgroundImage;
+        squares[i].style.backgroundImage = "";
+        const firstRow = [0, 1, 2, 3, 4, 5, 6, 7];
+        const isFirstRow = firstRow.includes(i);
+        if (isFirstRow && squares[i].style.backgroundImage === "") {
+          let randomColor = Math.floor(Math.random() * candyColors.length);
+          squares[i].style.backgroundImage = candyColors[randomColor];
+        }
+      }
+    }
+  }
+
   //checking for matches in
 
   function checkRowForThree() {
@@ -99,6 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
         )
       ) {
         score += 3;
+        scoreDisplay.innerHTML = score;
         rowOfThree.forEach((index) => {
           squares[index].style.backgroundColor = "";
         });
@@ -120,6 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
         )
       ) {
         score += 3;
+        scoreDisplay.innerHTML = score;
         ColumnOfThree.forEach((index) => {
           squares[index].style.backgroundColor = "";
         });
@@ -131,5 +151,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.setInterval(function () {
     checkRowForThree();
     checkColumnForThree();
+    moveIntoSquareBelow();
   }, 100);
 });
