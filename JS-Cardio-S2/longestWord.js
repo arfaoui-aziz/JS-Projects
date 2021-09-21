@@ -1,16 +1,27 @@
 let longestWord = (str) => {
   //MySolution
 
+  //   let wordArr = str.toLowerCase().match(/[a-z0-9]+/g);
+  //   let map = {};
+
+  //   for (word of wordArr) {
+  //     map[word.length] = !map[word.length]
+  //       ? word
+  //       : [].concat(map[word.length], word);
+  //   }
+
+  //   return map[Math.max(...Object.keys(map))];
+
+  // Brad Solution
   let wordArr = str.toLowerCase().match(/[a-z0-9]+/g);
-  let map = {};
 
-  for (word of wordArr) {
-    map[word.length] = !map[word.length]
-      ? word
-      : [].concat(map[word.length], word);
-  }
+  let sortedArr = wordArr.sort((a, b) => b.length - a.length);
 
-  return map[Math.max(...Object.keys(map))];
+  let longestWordArr = sortedArr.filter(
+    (word) => word.length === sortedArr[0].length
+  );
+
+  return longestWordArr;
 };
 
 console.log(longestWord("Hello there, my name is aziz "));
